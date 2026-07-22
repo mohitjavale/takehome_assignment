@@ -1,0 +1,23 @@
+[project]
+name = "humanoid_standup"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "mohitjavale", email = "mohitjavale@gmail.com" }
+]
+requires-python = ">=3.8"
+dependencies = [
+    "gym>=0.26.2",
+    "isaacgym",
+    "omegaconf>=2.3.1",
+    "protobuf<3.20",
+    "skrl>=1.4.3",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.19,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.sources]
+isaacgym = { path = "isaacgym/python", editable = true }
