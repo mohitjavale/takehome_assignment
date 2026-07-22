@@ -5,7 +5,8 @@
 **Controls Approach:** RL  
 
 **Result:** Robots can stand up from any random orientation on the ground with a ~93% success rate.  
-The policy is still explosive and jerky (definitely not safe for deployment), but can be made better with further reward shaping and tuning. (Unable to tune completely due to long training time on current hardware, making feedback and evaluation loops very long)
+The policy is still explosive and jerky (definitely not safe for deployment), but can be made better with further reward shaping and tuning. (Unable to tune completely due to long training time on current hardware, making feedback and evaluation loops very long)  
+Trying to improve further : )
 
 <!-- <video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop> -->
 
@@ -198,15 +199,17 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
 
 - **Random Pose Eval?:** One thing I actually noted was that in my eval implementation, even if I send 0 actions, the internal PD controller is still trying to maintain the default position. Note that this is not that bad, and one could implement a similar protocol in real life, where once fallen, the robot actually initially attempts to PD track some default joint configurations. However, this implies by the time the robot falls on the ground, it no longer actually maintains the random joint configuration I spawned it with, but mostly the default configuration. And note that this is not bad. I verified that under this protocol/controller, the robot actually ends up having 2 physically stable configurations in which it can lie down - i.e., face-up and face-down (as shown in the image below); the configs that land sideways just end up turning face-up under this simple PD controller as it is physically stabler. This helps reduce uncertainty / automatically causes the robot to converge on one of these stable positions, reducing the requirements of the controller to actually deal with arbitrary poses. Of course, the policy has learned to even output actions during the fall to shift towards optimal outcomes for standup during training, and it should still be able to deal with random poses. 
 
-- **"Jumpy" Behavior:** The current reward structure sometimes encourages the robot to 'jump' up instead of stably moving on its feet. I'm sure this can simply be fixed by shaping some feet contact/force, or even shaping the stand reward a bit more appropriately. But with limited compute and time, I leave it for another day. 
-
-
-
 <p align="center">
 <img src="media/eval_orientations.png" width="400">
 <br>
 <em>We see most robots after falling either end up in face-up or face-down states (even if they fall on their side)</em>
 </p>
+
+- **"Jumpy" Behavior:** The current reward structure sometimes encourages the robot to 'jump' up instead of stably moving on its feet. I'm sure this can simply be fixed by shaping some feet contact/force, or even shaping the stand reward a bit more appropriately. But with limited compute and time, I leave it for another day. 
+
+
+
+
 
 
 
