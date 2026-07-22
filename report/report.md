@@ -138,8 +138,8 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
         <em>Reward curves across 3 runs with similar rewards and parameters</em>
         </p>
 
-         <p align="center">
-        <img src="./media/reward_curve_multiple.png" width="600">
+        <p align="center">
+        <img src="./media/reward_curve_multiple.png" width="300">
         <br>
         <em>Just a glimpse of the variability in rewards with slight tweaking of rreward terms</em>
         </p>
@@ -149,13 +149,14 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
     - Scaling
         - In locomotion tasks, I usually am able to learn with just 1024 environments. However, with standup, scaling did play a very important role, and I had to use 8192 environments to see progress in meaningful time. As you can see in the figure below, scaling the number of environments down in attempts to speed up simulation and save on VRAM to run multiple experiments in parallel led to a significant drop in learning/convergence rates.
 
-        <figure>
-        <img src="./media/reward_curves_scaling.png">
-        <figcaption>Grey curve = 8192 num_envs, Blue curve = 2048 num_envs</figcaption>
-        </figure>
+        <p align="center">
+        <img src="./media/reward_curves_scaling.png" width="300">
+        <br>
+        <em>Grey curve = 8192 num_envs, Blue curve = 2048 num_envs</em>
+        </p>
 
 - **Policy video**
-    - I of course trained mutiple versions, and am pasting the video of rollouts of one that I feel were on the better side.
+    - I trained mutiple versions, and am pasting the videos of rollouts of one that I feel were on the better side.
 
     - Rollout during eval -
       
@@ -176,10 +177,15 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
 - **Evaluation**
     - The policy was trained with robots resetting falling in the air. This is not from a grounded pose as mentioned in the problem statement exactly. To evaluate the policy on these exact situations, during my eval, I send 0 actions for the first 2 seconds, allowing the policy to fall on the ground stationarily (as would be in the problem statement), and then start inference of my policy. I measured success by checking if the robot had reached 80% of the required target root height and required upright orientation at the end of the episode. With this evaluation metric, the policy was able to successfully stand up 93% of the time over ~200 episodes. I've noticed the policy struggles slightly with the face down pose.
 
-    <figure>
-    <img src="media/eval_sucess_rate.jpeg">
-    <figcaption>A snapshot of the output of the eval process</figcaption>
-    </figure>
+
+
+    <p align="center">
+    <img src="media/eval_sucess_rate.jpeg" width="400">
+    <br>
+    <em>A snapshot of the success rate output of the eval process</em>
+    </p>
+
+    
 
 
 ## Limitations and Improvements
@@ -194,10 +200,13 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
 
 - **"Jumpy" Behavior:** The current reward structure sometimes encourages the robot to 'jump' up instead of stably moving on its feet. I'm sure this can simply be fixed by shaping some feet contact/force, or even shaping the stand reward a bit more appropriately. But with limited compute and time, I leave it for another day. 
 
-<figure>
-    <img src="media/eval_orientations.png">
-    <figcaption>We see most robots after falling either end up in face-up or face-down states (even if they fall on their side)</figcaption>
-</figure>
+
+
+<p align="center">
+<img src="media/eval_orientations.png" width="400">
+<br>
+<em>We see most robots after falling either end up in face-up or face-down states (even if they fall on their side)</em>
+</p>
 
 
 
