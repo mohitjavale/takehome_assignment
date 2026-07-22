@@ -132,15 +132,19 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
     - Convergence
         - I have to admit the training is not the most stable, but most policies do seem to somewhat converge after the 4-5 hour mark. This convergence is not as stable, as we can see in the image below that the reward still keeps fluctuating and varying significantly, as the policy might be alternating between some local optima. Further, training runs with almost similar parameters do not necessarily converge to similar reward curves, and slight changes in reward structuring also led to significantly diverging behaviors, implying the training is still not completely stable. (Note - I've just shown 3 curves here that were obtained with somewhat stable settings. But over the many experiments and tweaks I've performed, I've seen greatly diverging behaviors in reward curves, sometimes even complete collapse).
 
-        <figure>
-        <img src="./media/reward_curve_convergence.png">
-        <figcaption>Reward curves across 3 runs with similar rewards and parameters</figcaption>
-        </figure>  
+        <p align="center">
+        <img src="./media/reward_curve_convergence.png" width="600">
+        <br>
+        <em>Reward curves across 3 runs with similar rewards and parameters</em>
+        </p>
 
-        <figure>
-        <img src="./media/reward_curve_multiple.png">
-        <figcaption>Just a glimpse of the variability in rewards with slight variations</figcaption>
-        </figure>
+         <p align="center">
+        <img src="./media/reward_curve_multiple.png" width="600">
+        <br>
+        <em>Just a glimpse of the variability in rewards with slight tweaking of rreward terms</em>
+        </p>
+
+
 
     - Scaling
         - In locomotion tasks, I usually am able to learn with just 1024 environments. However, with standup, scaling did play a very important role, and I had to use 8192 environments to see progress in meaningful time. As you can see in the figure below, scaling the number of environments down in attempts to speed up simulation and save on VRAM to run multiple experiments in parallel led to a significant drop in learning/convergence rates.
