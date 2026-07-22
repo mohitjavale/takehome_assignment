@@ -176,7 +176,7 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
     - Also note that the jerky and sudden twisting movement might not feel realistic (and safe), and I do certainly feel the same as well. But then I'm reminded of this [impressive video from Unitree](https://youtu.be/bPSLMX_V38E?si=RPir0-ib2z6du7Kb), which shows that the hardware is actually capable of some insanely fast and dynamic and twisted stand-up motions that feel icky to watch, even in real life. And hence, while it feels wrong, it just might, might be possible : )
 
 - **Evaluation**
-    - The policy was trained with robots resetting falling in the air. This is not from a grounded pose as mentioned in the problem statement exactly. To evaluate the policy on these exact situations, during my eval, I send 0 actions for the first 2 seconds, allowing the policy to fall on the ground stationarily (as would be in the problem statement), and then start inference of my policy. I measured success by checking if the robot had reached 80% of the required target root height and required upright orientation at the end of the episode. With this evaluation metric, the policy was able to successfully stand up 93% of the time over ~200 episodes. I've noticed the policy struggles slightly with the face down pose.
+    - The policy was trained with robots resetting falling in the air. This is not from a grounded pose as mentioned in the problem statement exactly. To evaluate the policy on these exact situations, during my eval, I send 0 actions for the first 2 seconds, allowing the policy to fall on the ground stationarily (as would be in the problem statement), and then start inference of my policy. I measured success by checking if the robot had reached 80% of the required target root height and required upright orientation at the end of the episode. With this evaluation metric, the policy was able to successfully stand up 93% of the time over ~200 episodes. I've noticed the policy struggles slightly with the face down pose, however most land face up.
 
 
 
@@ -207,11 +207,11 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
 
 - **"Jumpy" Behavior:** The current reward structure sometimes encourages the robot to 'jump' up instead of stably moving on its feet. I'm sure this can simply be fixed by shaping some feet contact/force, or even shaping the stand reward a bit more appropriately. But with limited compute and time, I leave it for another day. 
 
+- **Unstable Behavior:** I've noticed, that the policy, especially when trying to stand up from face down, can sometimes get stuck in a buckled legs state. This is also seen in some cases when the robot is standing up unstably leaning backwards. I can try and improve this behaviour by performing weighted spawning, explicitly prefering spawning face down for some percent of the robots.
 
+- **Training Imrpvoements:** as mentioned, the training is not the most stable and kind of twitchy and highly sensitive to the reward structuring and randomness at times. I can improve this by introducing much better curicullum learning, where I can assist the robot with external forces, or spawn in gradually worsening states. However due to limited compute, training even once is a big time investment, and implementing curicullum and narrowing down tuning for this as well will take much much longer.
 
-
-
-
+- *Get more compute!!! haha*
 
 ## AI Tool use
 - I truly beleive LLM's to be usefull tools, like a calculator, and have certainly used AI assistance in rephrasing documentation, as well as writing code and navigating the dependency hell of using a deprecated simulator. 
