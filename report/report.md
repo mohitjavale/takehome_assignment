@@ -7,7 +7,9 @@
 **Result:** Robots can stand up from any random orientation on the ground with a ~93% success rate.  
 The policy is still explosive and jerky (definitely not safe for deployment), but can be made better with further reward shaping and tuning. (Unable to tune completely due to long training time on current hardware, making feedback and evaluation loops very long)
 
-<video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop></
+<!-- <video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop> -->
+
+https://github.com/user-attachments/assets/cd6c00d5-78da-4c3c-9ac0-7fe49493358a
 
 ## Problem Statement
 
@@ -152,10 +154,13 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
     - I of course trained mutiple versions, and am pasting the video of rollouts of one that I feel were on the better side.
 
     - Rollout during eval - 
-    <video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop></
+    https://github.com/user-attachments/assets/cd6c00d5-78da-4c3c-9ac0-7fe49493358a
+    <!-- <video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop> -->
 
     -  Rollout during training (rendering colission mesh, which is faster than rednering full mesh) 
-    <video src="./media/g1_standup_collisionMesh.mp4" width="100%" controls autoplay muted loop></
+    
+    https://github.com/user-attachments/assets/92a47bdd-9ede-40dd-9baa-8122c19dac45
+    <!-- <video src="./media/g1_standup_collisionMesh.mp4" width="100%" controls autoplay muted loop> -->
 
 - **Behavior**
     - I completely understand that while the task is being done successfully, this behavior is far from being able to be deployed safely. However, I believe now that we've gotten the rewards structure to at least get the policy to the local minima of behavior we desire, we should be able to further tune and do minor reward shaping to get deployable policies.
