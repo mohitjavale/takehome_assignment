@@ -1,0 +1,132 @@
+env:
+  num_envs: 8192
+  num_actions: 23
+  spacing: 1.0
+  action_scale: 1.0
+  clip_actions: 100.0
+  episode_length_s: 8.0
+  sim:
+    dt: 0.005
+    substeps: 1
+    gravity:
+    - 0.0
+    - 0.0
+    - -9.81
+  control:
+    decimation: 4
+    use_sim_PD_controller: true
+    simulate_action_latency: false
+    kp:
+      hip: 100.0
+      knee: 150.0
+      ankle: 40.0
+      waist: 300.0
+      shoulder: 100.0
+      elbow: 50.0
+    kd:
+      hip: 2.0
+      knee: 4.0
+      ankle: 2.0
+      waist: 3.0
+      shoulder: 2.0
+      elbow: 2.0
+  asset:
+    folder: g1_description
+    file: g1_23dof_rev_1_0.urdf
+    base_init_pos:
+    - 0.0
+    - 0.0
+    - 1.5
+    base_init_quat:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    default_joint_angles:
+      left_hip_pitch_joint: -0.2
+      left_hip_roll_joint: 0.0
+      left_hip_yaw_joint: 0.0
+      left_knee_joint: 0.4
+      left_ankle_pitch_joint: -0.2
+      left_ankle_roll_joint: 0.0
+      right_hip_pitch_joint: -0.2
+      right_hip_roll_joint: 0.0
+      right_hip_yaw_joint: 0.0
+      right_knee_joint: 0.4
+      right_ankle_pitch_joint: -0.2
+      right_ankle_roll_joint: 0.0
+      waist_yaw_joint: 0.0
+      waist_roll_joint: 0.0
+      waist_pitch_joint: 0.0
+      left_shoulder_pitch_joint: 0.0
+      left_shoulder_roll_joint: 0.0
+      left_shoulder_yaw_joint: 0.0
+      left_elbow_joint: 0.0
+      right_shoulder_pitch_joint: 0.0
+      right_shoulder_roll_joint: 0.0
+      right_shoulder_yaw_joint: 0.0
+      right_elbow_joint: 0.0
+    dof_names:
+    - left_hip_pitch_joint
+    - left_hip_roll_joint
+    - left_hip_yaw_joint
+    - left_knee_joint
+    - left_ankle_pitch_joint
+    - left_ankle_roll_joint
+    - right_hip_pitch_joint
+    - right_hip_roll_joint
+    - right_hip_yaw_joint
+    - right_knee_joint
+    - right_ankle_pitch_joint
+    - right_ankle_roll_joint
+    - waist_yaw_joint
+    - waist_roll_joint
+    - waist_pitch_joint
+    - left_shoulder_pitch_joint
+    - left_shoulder_roll_joint
+    - left_shoulder_yaw_joint
+    - left_elbow_joint
+    - right_shoulder_pitch_joint
+    - right_shoulder_roll_joint
+    - right_shoulder_yaw_joint
+    - right_elbow_joint
+obs:
+  num_obs: 78
+  scales:
+    lin_vel: 2.0
+    ang_vel: 0.25
+    dof_pos: 1.0
+    dof_vel: 0.05
+reward:
+  scales:
+    standup: 10.0
+    target_height: 0.8
+    action_rate: -0.01
+    dof_vel: -0.001
+    termination: -100.0
+    feet_contact: 0.2
+    pose: 2.0
+    pose_sigma: 5.0
+models:
+  policy:
+    layers:
+    - 512
+    - 256
+    - 128
+    activation: elu
+  value:
+    layers:
+    - 512
+    - 256
+    - 128
+    activation: elu
+training:
+  rollouts: 24
+  learning_rate: 0.001
+  discount_factor: 0.99
+  lambda: 0.95
+  learning_rate_scheduler: kl
+  kl_threshold: 0.008
+  max_iterations: 15000
+  save_interval: 50
+  exp_name: t10
