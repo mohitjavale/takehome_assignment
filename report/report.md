@@ -159,9 +159,10 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
       
     <!-- <video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop> -->
 
-    -  Rollout during training (rendering colission mesh, which is faster than rednering full mesh) 
+    - Rollout during training (rendering colission mesh, which is faster than rednering full mesh) 
     
-    https://github.com/user-attachments/assets/92a47bdd-9ede-40dd-9baa-8122c19dac45
+      https://github.com/user-attachments/assets/92a47bdd-9ede-40dd-9baa-8122c19dac45
+      
     <!-- <video src="./media/g1_standup_collisionMesh.mp4" width="100%" controls autoplay muted loop> -->
 
 - **Behavior**
