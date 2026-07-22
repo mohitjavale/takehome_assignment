@@ -153,8 +153,10 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
 - **Policy video**
     - I of course trained mutiple versions, and am pasting the video of rollouts of one that I feel were on the better side.
 
-    - Rollout during eval - 
-    https://github.com/user-attachments/assets/cd6c00d5-78da-4c3c-9ac0-7fe49493358a
+    - Rollout during eval -
+      
+      https://github.com/user-attachments/assets/cd6c00d5-78da-4c3c-9ac0-7fe49493358a
+      
     <!-- <video src="./media/g1_standup.mp4" width="100%" controls autoplay muted loop> -->
 
     -  Rollout during training (rendering colission mesh, which is faster than rednering full mesh) 
