@@ -1,6 +1,6 @@
 ## Summary 
  
-**Problem Chosen:** Humanoid Standup from arbitrary pose.
+**Problem Chosen:** Humanoid Standup from arbitrary pose.  
 **Robot morphology:** Unitree G1  
 **Controls Approach:** RL  
 
@@ -133,7 +133,7 @@ The control task is formulated as a Markov Decision Process (MDP), where a reinf
         <figure>
         <img src="./media/reward_curve_convergence.png">
         <figcaption>Reward curves across 3 runs with similar rewards and parameters</figcaption>
-        </figure>
+        </figure>  
 
         <figure>
         <img src="./media/reward_curve_multiple.png">
