@@ -11,7 +11,7 @@ cd takehome_assignment
 ```
 
 **2. Add Isaac Gym:**
-Download Isaac Gym (Preview 4) from NVIDIA and extract it directly into the root of this project.  
+Download Isaac Gym (Preview 4) from [NVIDIA's website](https://developer.nvidia.com/isaac-gym) and extract it directly into the root of this project.  
 No need to install it, the uv path has been set to 
 Your directory structure must match this layout:
 ```text
